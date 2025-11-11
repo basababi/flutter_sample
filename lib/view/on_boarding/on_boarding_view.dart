@@ -17,12 +17,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     {
       "title": "Шаргуу хөдөлмөр",
       "subtitle": "Шилдэг үр дүнгийн үндэс бол тэвчээр.",
-      "image": "assets/img/p1.jpg",
+      "image": "assets/img/p2.jpg",
     },
     {
       "title": "Эрүүл, эрч хүчтэй бай",
       "subtitle": "Өдөр бүрийн жижиг ахиц том ялалт руу хөтөлнө!",
-      "image": "assets/img/p2.jpg",
+      "image": "assets/img/p3.jpg",
     },
   ];
 

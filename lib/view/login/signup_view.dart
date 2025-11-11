@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:fitness/common/colo_extention.dart';
 import 'package:fitness/common_widget/round_textfield.dart';
 import 'package:fitness/common_widget/round_buttom.dart';
+import 'package:fitness/view/home/home_page.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -69,6 +70,20 @@ class _SignUpViewState extends State<SignUpView> {
               ),
 
               const SizedBox(height: 40),
+              RoundButtom(
+                title: "Sign Up",
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(
+                        name: nameController.text,
+                        email: emailController.text,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),
