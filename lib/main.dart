@@ -1,4 +1,3 @@
-// main.dart
 import 'package:fitness/view/on_boarding/started_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/colo_extention.dart';

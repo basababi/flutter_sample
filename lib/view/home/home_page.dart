@@ -4,6 +4,7 @@ import 'home.dart';
 import 'gym.dart';
 import 'profile.dart';
 import 'food.dart';
+import 'package:fitness/common/colo_extention.dart';
 
 class HomePage extends StatefulWidget {
   final String name;
@@ -34,21 +35,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_currentIndex],
+      // lib/view/home/home_page.dart (зөвхөн өнгө засагдсан)
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xFF212329),
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: const Color.fromARGB(255, 3, 0, 0),
+        selectedItemColor: TColor.primaryColor2,
+        unselectedItemColor: Colors.white54,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         onTap: (index) => setState(() => _currentIndex = index),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Нvvр",
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.fitness_center),
-            label: "Gym",
+            label: "Дасгал",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.fastfood), label: "Food"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_menu),
+            label: "Хоол",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: "Профайл",
+          ),
         ],
       ),
     );
