@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'categorydetailpage.dart';
 import '/common/colo_extention.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../gym_tab/yoga.dart';
+import '../gym_tab/fitness.dart';
+import '../gym_tab/cardio.dart';
+import '../gym_tab/pilates.dart';
 
 class GymTab extends StatefulWidget {
   const GymTab({super.key});
@@ -41,14 +45,48 @@ class _GymTabState extends State<GymTab> {
     {"name": "30 минутын fitness дасгал", "done": false},
   ];
 
+  void _openCategory(String? title, Map<String, String> cat) {
+    if (title == null) return;
+
+    if (title == 'Yoga') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => YogaPage()),
+      );
+    } else if (title == 'Fitness') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => FitnessPage()),
+      );
+    } else if (title == 'Cardio') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CardioPage()),
+      );
+    } else if (title == 'Pilates') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PilatesPage()),
+      );
+    } else {
+      // fallback to generic detail page
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CategoryDetailPage(category: cat),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: TColor.grayColor,
+      backgroundColor: const Color(0xFF1E1E1E),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [TColor.blackColor, TColor.grayColor],
+            colors: [Color(0xFF1E1E1E), Color(0xFF1E1E1E)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -59,7 +97,26 @@ class _GymTabState extends State<GymTab> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // --- Grid хэсэг ---
+                // --- Ангилал Text ---
+                Text(
+                  "Ангилал",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 6,
+                        color: Colors.black.withOpacity(0.6),
+                        offset: const Offset(1, 2),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+
+                // --- Grid ---
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -73,15 +130,7 @@ class _GymTabState extends State<GymTab> {
                   itemBuilder: (context, index) {
                     final cat = categories[index];
                     return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                CategoryDetailPage(category: cat),
-                          ),
-                        );
-                      },
+                      onTap: () => _openCategory(cat["title"], cat),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -134,35 +183,44 @@ class _GymTabState extends State<GymTab> {
                 ),
                 const SizedBox(height: 10),
 
-                Column(
-                  children: todayWorkouts.map((item) {
-                    return Card(
-                      color: Colors.white,
-                      margin: const EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: CheckboxListTile(
-                        title: Text(
-                          item["name"],
-                          style: TextStyle(
-                            color: item["done"]
-                                ? Colors.grey
-                                : const Color.fromARGB(255, 14, 0, 86),
-                            decoration: item["done"]
-                                ? TextDecoration.lineThrough
-                                : TextDecoration.none,
-                          ),
+                // 🔥 TodayWorkouts background
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF5b5b5b),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: const Color(0xB5b5b5b5)),
+                  ),
+                  child: Column(
+                    children: todayWorkouts.map((item) {
+                      return Card(
+                        color: Colors.white,
+                        margin: const EdgeInsets.symmetric(vertical: 6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        value: item["done"],
-                        onChanged: (value) {
-                          setState(() {
-                            item["done"] = value!;
-                          });
-                        },
-                      ),
-                    );
-                  }).toList(),
+                        child: CheckboxListTile(
+                          title: Text(
+                            item["name"],
+                            style: TextStyle(
+                              color: item["done"]
+                                  ? Colors.grey
+                                  : const Color.fromARGB(255, 14, 0, 86),
+                              decoration: item["done"]
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none,
+                            ),
+                          ),
+                          value: item["done"],
+                          onChanged: (value) {
+                            setState(() {
+                              item["done"] = value!;
+                            });
+                          },
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ],
             ),

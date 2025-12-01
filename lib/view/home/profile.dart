@@ -12,15 +12,21 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF6835BD),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [TColor.grayColor, Color(0xFF6B88A3)],
+            colors: [
+              Color(0xFF6835bd), // эхний өнгө (2 хэсэг)
+              Color(0xFF6b88a3),
+              Color(0xFF1E1E1E), // хоёр дахь өнгө (1 хэсэг)
+              Color(0xFF1E1E1E), // доод өнгө (1 хэсэг)
+            ],
+            stops: [0.0, 0.45, 0.45, 1.0],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
+
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(12),
@@ -33,7 +39,7 @@ class ProfileTab extends StatelessWidget {
                   backgroundColor: TColor.whiteColor,
                   child: CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/img/basaa.jpg'),
+                    backgroundImage: AssetImage('assets/img/power.jpg'),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -73,7 +79,15 @@ class ProfileTab extends StatelessWidget {
                             Icons.show_chart,
                             color: Colors.black87,
                           ),
-                          title: const Text('Status'),
+                          title: const Text(
+                            'Status',
+                            style: TextStyle(
+                              fontFamily: 'GoogleFonts.notoSans',
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           trailing: const Icon(
                             Icons.arrow_forward_ios,
                             size: 18,
@@ -86,7 +100,15 @@ class ProfileTab extends StatelessWidget {
                             Icons.chat_bubble,
                             color: Colors.black87,
                           ),
-                          title: const Text('Coach'),
+                          title: const Text(
+                            'Coach',
+                            style: TextStyle(
+                              fontFamily: 'GoogleFonts.notoSans',
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           trailing: const Icon(
                             Icons.arrow_forward_ios,
                             size: 18,
@@ -103,7 +125,7 @@ class ProfileTab extends StatelessWidget {
                             'Нууц үг солих',
                             style: GoogleFonts.notoSans(
                               fontSize: 16,
-                              color: Colors.black87,
+                              color: const Color.fromARGB(221, 255, 255, 255),
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -120,7 +142,15 @@ class ProfileTab extends StatelessWidget {
                             Icons.logout,
                             color: Colors.redAccent,
                           ),
-                          title: const Text('Гарах'),
+                          title: const Text(
+                            'Гарах',
+                            style: TextStyle(
+                              fontFamily: 'GoogleFonts.notoSans',
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           trailing: const Icon(
                             Icons.arrow_forward_ios,
                             size: 18,
