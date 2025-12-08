@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../common/colo_extention.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../view/login/login.dart';
+import '../home/chat_page.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -41,7 +42,7 @@ class ProfileTab extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "User Name",
+                  "You can do this!",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -49,10 +50,6 @@ class ProfileTab extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 0),
-                Text(
-                  'Email: user@example.com',
-                  style: const TextStyle(fontSize: 16, color: Colors.white70),
-                ),
                 const SizedBox(height: 20),
                 Expanded(
                   child: Container(
@@ -110,7 +107,15 @@ class ProfileTab extends StatelessWidget {
                             Icons.arrow_forward_ios,
                             size: 18,
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ChatPage(coachId: 'yourCoachId'),
+                              ),
+                            );
+                          },
                         ),
                         const Divider(height: 1),
                         ListTile(
