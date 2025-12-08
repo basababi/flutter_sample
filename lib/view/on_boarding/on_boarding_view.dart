@@ -1,4 +1,4 @@
-import 'package:fitness/view/on_boarding/on_boarding_flow.dart'; // ← ШИНЭ
+import 'package:fitness/view/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/colo_extention.dart';
 import 'package:fitness/common_widget/on_boarding_page.dart';
@@ -43,7 +43,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             onLastPage: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (_) => const OnBoardingFlow()),
+                MaterialPageRoute(builder: (_) => const LoginView()),
               );
             },
           );

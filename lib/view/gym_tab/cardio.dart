@@ -100,7 +100,7 @@ class _CardioPageState extends State<CardioPage> {
   Widget build(BuildContext context) {
     final bgColor = const Color(0xFF222222);
     final cardBg = Colors.white;
-    final accent = TColor.primaryColor2 ?? const Color(0xFF7B4BFF);
+    final accent = TColor.primaryColor2;
     final items = _itemsByTab[_selectedTab] ?? [];
     final visibleItems = _filteredItems(items);
 

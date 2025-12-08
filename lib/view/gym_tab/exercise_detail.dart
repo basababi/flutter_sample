@@ -16,7 +16,7 @@ class ExerciseDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = TColor.primaryColor2 ?? const Color(0xFF7B4BFF);
+    final accent = TColor.primaryColor2;
 
     return Scaffold(
       backgroundColor: const Color(0xFF111111),

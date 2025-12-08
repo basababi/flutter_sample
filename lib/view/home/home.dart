@@ -16,8 +16,6 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: const Color(0xFF1E1E1E),
       body: SafeArea(

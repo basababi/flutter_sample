@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import '/view/on_boarding/on_boarding_gender.dart';
 import '../../common/colo_extention.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../view/login/login.dart';
 
 class ProfileTab extends StatelessWidget {
-  final String name;
-  final String email;
-
-  const ProfileTab({super.key, required this.name, required this.email});
+  const ProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,7 @@ class ProfileTab extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  name,
+                  "User Name",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -53,7 +50,7 @@ class ProfileTab extends StatelessWidget {
                 ),
                 const SizedBox(height: 0),
                 Text(
-                  'Email: $email',
+                  'Email: user@example.com',
                   style: const TextStyle(fontSize: 16, color: Colors.white70),
                 ),
                 const SizedBox(height: 20),
@@ -156,15 +153,14 @@ class ProfileTab extends StatelessWidget {
                             size: 18,
                           ),
                           onTap: () {
-                            Navigator.pushReplacement(
+                            Navigator.of(
                               context,
+                              rootNavigator: true,
+                            ).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const GenderSelectionView(),
+                                builder: (context) => const LoginView(),
                               ),
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Та гарлаа!")),
+                              (route) => false,
                             );
                           },
                         ),

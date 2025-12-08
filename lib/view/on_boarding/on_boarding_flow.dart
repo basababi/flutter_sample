@@ -1,9 +1,9 @@
+import 'package:fitness/view/home/home_page.dart';
 import 'package:fitness/view/on_boarding/on_boarding_gender.dart';
 import 'package:fitness/view/on_boarding/on_boarding_age.dart';
 import 'package:fitness/view/on_boarding/on_boarding_height.dart';
 import 'package:fitness/view/on_boarding/on_boarding_weight.dart';
 import 'package:fitness/view/on_boarding/on_boarding_goal.dart';
-import 'package:fitness/view/login/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/colo_extention.dart';
 
@@ -18,13 +18,13 @@ class _OnBoardingFlowState extends State<OnBoardingFlow> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    GenderSelectionView(),
-    AgeSelectionView(),
-    HeightSelectionView(),
-    WeightSelectionView(),
-    GoalSelectionView(),
-    SignUpView(),
+  final List<Widget> _pages = [
+    const GenderSelectionView(),
+    const AgeSelectionView(),
+    const HeightSelectionView(),
+    const WeightSelectionView(),
+    const GoalSelectionView(),
+    const HomePage(),
   ];
 
   @override
@@ -40,17 +40,20 @@ class _OnBoardingFlowState extends State<OnBoardingFlow> {
             children: _pages,
           ),
 
+          /// ----- ТОВЧНУУДЫН ХЭСЭГ -----
           Positioned(
             bottom: 30,
             left: 25,
             right: 25,
-            child: Row(
-              children: [
-                if (_currentIndex > 0) Expanded(child: _backButton()),
-                if (_currentIndex > 0) const SizedBox(width: 15),
-                Expanded(child: _continueButton()),
-              ],
-            ),
+            child: _currentIndex == _pages.length - 1
+                ? const SizedBox() // 👉 SignUpView дээр ямар ч товч харагдахгүй
+                : Row(
+                    children: [
+                      if (_currentIndex > 0) Expanded(child: _backButton()),
+                      if (_currentIndex > 0) const SizedBox(width: 15),
+                      Expanded(child: _continueButton()),
+                    ],
+                  ),
           ),
         ],
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'categorydetailpage.dart';
-import '/common/colo_extention.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../gym_tab/yoga.dart';
 import '../gym_tab/fitness.dart';

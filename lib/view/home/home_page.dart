@@ -6,10 +6,7 @@ import 'food.dart';
 import 'package:fitness/common/colo_extention.dart';
 
 class HomePage extends StatefulWidget {
-  final String name;
-  final String email;
-
-  const HomePage({super.key, required this.name, required this.email});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -41,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             page = const FoodTab();
             break;
           case 3:
-            page = ProfileTab(name: widget.name, email: widget.email);
+            page = const ProfileTab();
             break;
           default:
             page = const HomeTab();
